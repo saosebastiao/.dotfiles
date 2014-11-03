@@ -1,0 +1,26 @@
+[color]
+    branch = auto
+    interactive = auto
+    status = auto
+    diff = auto
+    ui = true
+[user]
+    name = Daniel Toone
+    email = tooned@amazon.com
+[core]
+    editor = vim
+    pager = less -RX
+    excludesfile = /home/tooned/.gitignore
+    whitespace = trailing-space,space-before-tab
+    eol = lf
+[alias]
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+[push]
+    default = upstream
+[branch]
+    autosetuprebase = always
+[remote "coworker"]
+#    uploadpack = /apollo/env/SDETools/bin/git-upload-pack
+[amazon]
+#    append-cr-url = true
