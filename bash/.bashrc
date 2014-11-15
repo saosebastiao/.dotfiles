@@ -95,8 +95,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-alias bizbox='ssh bizbox'
-alias desktop='ssh desktop'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -110,49 +108,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 export R_HOME="/usr/lib/R"
-export PATH=$PATH:~/bin:~/julia:~/minizinc/bin:~/ws/play-2.2.3
-export PATH=$PATH:/apollo/env/SDETools/bin
+export PATH=$PATH:~/bin
 export ANDROID_HOME=~/extern/adt/sdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-export MANPATH=$PATH:~/minizinc/doc/man
-export LD_LIBRARY_PATH=~/minizinc/lib
-export QT_PLUGIN_PATH=~/minizinc/plugins
 
 export EDITOR=vim
-if ! grep -qs '/mnt/winshare' /proc/mounts; then
-    mount /mnt/winshare
-fi
-
-export MARKPATH=$HOME/.marks
-function jump { 
-    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
-}
-function mark { 
-    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
-}
-function unmark { 
-    rm -i "$MARKPATH/$1"
-}
-function marks {
-    ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
-}
-function _completemarks() {
-    local curw=${COMP_WORDS[COMP_CWORD]}
-    local wordlist=$(find $MARKPATH -type l -printf "%f\n")
-    COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
-    return 0
-}
-function get_months(){
-    local cur_month_dir=$HOME/AdHoc/$(date "+%Y")/$(date "+%m")
-    local last_month_dir=$HOME/AdHoc/$(date --date="last Month" "+%Y")/$(date --date="last Month" "+%m")
-    rm -f "$MARKPATH/adhoc"
-    ln -fs "$cur_month_dir" "$MARKPATH/adhoc"
-    rm -f "$MARKPATH/adhoc_lm"
-    ln -fs "$last_month_dir" "$MARKPATH/adhoc_lm"
-    rm -f ~/adhoc
-    ln -fs "$cur_month_dir" ~/adhoc
-}
-complete -F _completemarks jump unmark
 
 function update_vim_plugins(){
     local WD=$(pwd)
@@ -165,18 +125,3 @@ function update_vim_plugins(){
     cd $WD
 }
 
-export LANG="en_US:UTF8"
-export LANGUAGE="en_US:en"
-export LC_CTYPE="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_PAPER="en_US.UTF-8"
-export LC_NAME="en_US.UTF-8"
-export LC_ADDRESS="en_US.UTF-8"
-export LC_TELEPHONE="en_US.UTF-8"
-export LC_MEASUREMENT="en_US.UTF-8"
-export LC_IDENTIFICATION="en_US.UTF-8"
-export LC_ALL=
