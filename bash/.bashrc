@@ -110,6 +110,8 @@ fi
 export R_HOME="/usr/lib/R"
 export PATH=$PATH:~/bin
 export ANDROID_HOME=~/extern/adt/sdk
+export SBT_HOME=~/extern/sbt
+export PATH=$PATH:$SBT_HOME/bin
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 export EDITOR=vim
