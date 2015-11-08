@@ -107,11 +107,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export R_HOME="/usr/lib/R"
 export PATH=$PATH:~/bin
-export ANDROID_HOME=~/extern/adt/sdk
+export R_HOME="/usr/lib/R"
 export SBT_HOME=~/extern/sbt
+export MINIZINC_HOME=~/extern/minizinc
+export ANDROID_HOME=~/extern/adt/sdk
 export PATH=$PATH:$SBT_HOME/bin
+export PATH=$PATH:$MINIZINC_HOME/bin
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 export EDITOR=vim
@@ -126,4 +128,3 @@ function update_vim_plugins(){
     done
     cd $WD
 }
-
